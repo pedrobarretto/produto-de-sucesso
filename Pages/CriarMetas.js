@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AsyncStorage } from 'react-native';
 import { View,Text,StyleSheet,Image,TextInput,TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native'
 import { goalsService } from '../service/plannerService/goalsService/goalsService'
