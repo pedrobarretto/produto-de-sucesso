@@ -11,4 +11,4 @@ class GoalsService {
 }
 
 const goalsService = new GoalsService();
-export { goalsService };
+export default goalsService ;

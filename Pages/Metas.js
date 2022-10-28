@@ -1,6 +1,8 @@
 import React from 'react';
-import { SafeAreaView, TouchableOpacity,View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { SafeAreaView, TouchableOpacity,View, FlatList, StyleSheet, Text, StatusBar, TextInput } from 'react-native';
 import { NavigationContainer,Navigate } from '@react-navigation/native';
+import ListItem from './CriarMetas'
+{/* array */}
 const DATA = [
   {
     id: '1',
@@ -25,18 +27,22 @@ const Metas = ( {navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+
+      <TextInput ></TextInput>
       <FlatList
         data={DATA}
-        renderItem={renderItem}
         keyExtractor={item => item.id}
+        renderItem={renderItem}
+        
       />
+
+
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CriarMetas')}>
                 <Text>
                     Criar Nova Meta
                 </Text>
         </TouchableOpacity>
     </SafeAreaView>
-
   );
 }
 

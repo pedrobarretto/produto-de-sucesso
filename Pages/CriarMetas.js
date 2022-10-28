@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { AsyncStorage } from 'react-native';
 import { View,Text,StyleSheet,Image,TextInput,TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native'
+import { goalsService } from '../service/plannerService/goalsService/goalsService'
+
 export default function CriarMetas(){
     const navigation = useNavigation();
+
+    const [text,setText] = useState('')
+
+    const createText = (e) =>{
+        setText(e.target.value)
+    }
+
+    const createGoal = async() =>{
+        const goal = await goalsService.createGoal(text)
+        console.log(goal);
+    }
+
     return(
         <View style={styles.container}>
+            {/* Logo e titulo */}
                 <View style={styles.containerLogo}>
                     <Image
                     source={require('../img/zoe.png')}
@@ -15,10 +31,14 @@ export default function CriarMetas(){
                 <Text style={styles.Title}>
                 Adicionar Metas
                 </Text>
-                <TextInput placeholder="Meta" style={styles.TextInput}>
+
+                {/* input */}
+                <TextInput placeholder="Meta" style={styles.TextInput} value={text} onChange={createText}>
 
                 </TextInput>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+
+                {/* buttons */}
+                <TouchableOpacity style={styles.button} onPress={createGoal}>
                     <Text>
                         Adicionar Meta
                     </Text>
@@ -32,6 +52,7 @@ export default function CriarMetas(){
         </View>
     );
 }
+
 
 const styles = StyleSheet.create({
     container:{ flex: 1,
